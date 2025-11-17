@@ -15,6 +15,8 @@ const dealRoutes = require('./deal.route');
 const dataRoutes = require('./dashboard.route');
 const statusRoutes = require('./status.route');
 const auditRoutes = require('./audit.route');
+const branchRoutes = require('./branch.route');
+
 const router = express.Router();
 
 const defaultRoutes = [
@@ -33,6 +35,10 @@ const defaultRoutes = [
   {
     path: '/role-permission',
     route: rolePermissionRoutes,
+  },
+  {
+    path: '/branch',
+    route: branchRoutes
   },
   {
     path: '/ip-addresses',

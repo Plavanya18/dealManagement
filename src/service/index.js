@@ -1,5 +1,6 @@
 module.exports.authService = require('./auth.service');
 module.exports.roleService = require('./role.service');
+module.exports.branchService = require('./branch.service');
 module.exports.permissionService = require('./permission.service');
 module.exports.rolepermissionService = require('./rolepermission.service');
 module.exports.ipaddressService = require('./ipaddress.service');
