@@ -1,0 +1,14 @@
+module.exports.authService = require('./auth.service');
+module.exports.roleService = require('./role.service');
+module.exports.permissionService = require('./permission.service');
+module.exports.rolepermissionService = require('./rolepermission.service');
+module.exports.ipaddressService = require('./ipaddress.service');
+module.exports.userService = require('./user.service');
+module.exports.customerService = require('./customer.service');
+module.exports.fxrateService = require('./fxrate.service');
+module.exports.currencyService = require('./currency.service');
+module.exports.dealService = require('./deal.service');
+module.exports.dashboardService = require('./dashboard.service');
+module.exports.systembankService = require('./systembank.service');
+module.exports.statusService = require('./status.service');
+module.exports.auditService = require('./audit.service');

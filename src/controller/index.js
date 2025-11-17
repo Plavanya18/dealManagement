@@ -1,0 +1,14 @@
+module.exports.authController = require('./auth.controller');
+module.exports.roleController = require('./role.controller');
+module.exports.permissionController = require('./permission.controller');
+module.exports.rolepermissionController = require('./rolepermission.controller');
+module.exports.ipaddressController = require('./ipaddress.controller');
+module.exports.userController = require('./user.controller');
+module.exports.customerController = require('./customer.controller');
+module.exports.fxrateController = require('./fxrate.controller');
+module.exports.currencyController = require('./currency.controller');
+module.exports.dealController = require('./deal.controller');
+module.exports.dashboardController = require('./dashboard.controller');
+module.exports.systembankController = require('./systembank.controller');
+module.exports.statusController = require('./status.controller');
+module.exports.auditController = require('./audit.controller');
