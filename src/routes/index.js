@@ -87,6 +87,8 @@ const publicPaths = [
   '/auth/login',
   '/auth/verify-otp',
   '/auth/change-password',
+  '/auth/request-password-reset',
+  '/auth/reset-password',
 ];
 
 router.use((req, res, next) => {

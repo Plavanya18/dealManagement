@@ -52,8 +52,34 @@ const changePasswordController = async (req, res) => {
   }
 };
 
+const requestPasswordResetController = async (req, res) => {
+  const { email } = req.body;
+  if (!email) return res.status(400).json({ error: "Email is required" });
+
+  try {
+    const user = await authService.sendResetPasswordEmail(email);
+    res.json({ message: "Reset password email sent successfully" });
+  } catch (err) {
+    logger.error("Failed to send reset email:", err);
+    res.status(500).json({ error: err.message });
+  }
+};
+
+const resetPasswordController = async (req, res) => {
+  try {
+    const { email, newPassword } = req.body;
+    const user = await authService.resetPassword(email, newPassword);
+    res.status(200).json({ message: "Password Changed successfully" });
+  } catch (err) {
+    logger.error("Failed to update password:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
 module.exports = {
   loginController,
   verifyOtpController,
   changePasswordController,
+  requestPasswordResetController,
+  resetPasswordController,
 };

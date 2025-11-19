@@ -98,18 +98,6 @@ const toggleUserActiveController = async (req, res) => {
   }
 };
 
-const updatePasswordController = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { newPassword } = req.body;
-    const user = await userService.updatePassword(id, newPassword);
-    res.status(200).json(user);
-  } catch (err) {
-    logger.error("Failed to update password:", err);
-    res.status(500).json({ error: "Internal server error" });
-  }
-};
-
 const getLoggedInUserController = async (req, res) => {
   try {
     console.log("req.user.user_id", req.user);
@@ -179,7 +167,6 @@ module.exports = {
   listUsersController,
   getuserIdController,
   toggleUserActiveController,
-  updatePasswordController,
   getLoggedInUserController,
   getUserSessionsController,
   logoutController,

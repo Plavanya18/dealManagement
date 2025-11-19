@@ -239,21 +239,6 @@ const toggleUserActive = async (id, is_active, performedById = null, reason = nu
   }
 };
 
-const updatePassword = async (id, newPassword) => {
-  try {
-    const hashed = await bcrypt.hash(newPassword, 10);
-    const user = await getdb.user.update({
-      where: { id: parseInt(id) },
-      data: { password: hashed },
-    });
-    logger.info(`Password updated for user: ${user.email}`);
-    return user;
-  } catch (error) {
-    logger.error("Failed to update password:", error);
-    throw error;
-  }
-};
-
 const getLoggedInUser = async (user_id) => {
   try {
     const user = await getdb.user.findUnique({ 
@@ -369,7 +354,6 @@ module.exports = {
   listUsers,
   getUserById,
   toggleUserActive,
-  updatePassword,
   getLoggedInUser,
   getUserSessions,
   logoutUser,

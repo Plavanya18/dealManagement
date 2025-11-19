@@ -292,8 +292,46 @@ const changePasswordByEmail = async (email, oldPassword, newPassword) => {
   }
 };
 
+const FRONTEND_URL = "http://localhost:5173/reset-password";
+
+const sendResetPasswordEmail = async (email) => {
+  const user = await getdb.user.findUnique({ where: { email } });
+  if (!user) throw new Error("User not found");
+
+  const resetLink = `${FRONTEND_URL}?email=${encodeURIComponent(email)}`;
+
+  const subject = "Reset Your Password";
+  const text = `Hello,\n\nClick the link below to reset your password:\n${resetLink}\n\nIf you did not request this, please ignore this email.`;
+  const html = `
+    <p>Hello,</p>
+    <p>Click the link below to reset your password:</p>
+    <a href="${resetLink}">Reset Password</a>
+    <p>If you did not request this, please ignore this email.</p>
+  `;
+
+  await sendEmail(email, subject, text, html);
+  logger.info(`Reset password email sent to ${email}`);
+};
+
+const resetPassword = async (email, newPassword) => {
+  try {
+    const hashed = await bcrypt.hash(newPassword, 10);
+    const user = await getdb.user.update({
+      where: { email: email},
+      data: { password: hashed },
+    });
+    logger.info(`Password updated for user: ${user.email}`);
+    return user;
+  } catch (error) {
+    logger.error("Failed to update password:", error);
+    throw error;
+  }
+};
+
 module.exports = { 
   loginUser,
   verifyOtp,
   changePasswordByEmail,
+  sendResetPasswordEmail,
+  resetPassword,
 };

@@ -9,7 +9,6 @@ router.get("/sessions", userController.getUserSessionsController);
 router.get("/:id", userController.getuserIdController);
 router.put("/:id", userController.updateUserController);
 router.put("/status/:id",  userController.toggleUserActiveController);
-router.put("/password/:id", userController.updatePasswordController);
 router.post("/logout", userController.logoutController);
 router.delete("/:id", userController.deleteUser);
 
