@@ -309,7 +309,7 @@ const logoutUser = async (token) => {
   };
 };
 
-const deleteUser = async (id) => {
+const deleteUser = async (id, user_id) => {
   const userId = Number(id);
 
   try {
@@ -344,6 +344,7 @@ const deleteUser = async (id) => {
     const deletedUser = await getdb.user.update({
       where: { id: userId },
       data: {
+        deleted_by: parseInt(user_id),
         deleted_at: new Date(),
       }
     });

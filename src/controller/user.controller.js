@@ -151,7 +151,8 @@ const logoutController = async (req, res, next) => {
 const deleteUser = async (req, res) => {
   try {
     const id = req.params.id;
-    const deleted = await userService.deleteUser(id);
+    const user_id=req.user
+    const deleted = await userService.deleteUser(id, user_id);
     res.json({
       message: "Account Deleted",
     });
