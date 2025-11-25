@@ -77,6 +77,7 @@ model User {
   full_name               String
   email                   String          @unique
   password                String
+  phone                   String
   role_id                 Int?
   branch_id               Int?
   is_active               Boolean

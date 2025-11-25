@@ -41,6 +41,7 @@ const createUser = async (data) => {
         password: hashedPassword,
         role_id: data.role_id,
         branch_id: data.branch_id,
+        phone: data.phone,
         is_active: true,
         must_change_password: true,
         created_at: timestamp,
